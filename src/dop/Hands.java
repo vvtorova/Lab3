@@ -1,8 +1,8 @@
 package dop;
 
-import Human.Louis;
-import Other.Emotions;
-import Other.Shovel;
+import human.Louis;
+import other.Emotions;
+import other.Shovel;
 import enums.Location;
 import enums.Mood;
 

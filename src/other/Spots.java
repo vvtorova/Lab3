@@ -1,4 +1,4 @@
-package Other;
+package other;
 import enums.Location;
 
 

@@ -1,7 +1,7 @@
-package Human;
-import Other.Emotions;
+package human;
+import other.Emotions;
 import enums.Location;
-import Other.Light;
+import other.Light;
 import enums.Mood;
 
 import java.util.Objects;

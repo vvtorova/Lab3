@@ -1,6 +1,6 @@
-import Human.*;
-import Interfaces.Feel;
-import Other.*;
+import human.*;
+import interfaces.Feel;
+import other.*;
 import dop.Brunch;
 import dop.Ground;
 import dop.Hands;

@@ -1,6 +1,6 @@
-package Memory;
+package memory;
 
-import Interfaces.Remembering;
+import interfaces.Remembering;
 
 public class Memories implements Remembering {
 

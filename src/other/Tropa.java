@@ -1,5 +1,5 @@
-package Other;
-import Human.Person;
+package other;
+import human.Person;
 import enums.Mood;
 
 public class Tropa {

@@ -1,6 +1,4 @@
-package Interfaces;
-import Human.Louis;
-import Human.Person;
+package interfaces;
 
 public interface Remembering {
     String remember(String memory);

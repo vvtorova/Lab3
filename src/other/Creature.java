@@ -1,7 +1,7 @@
-package Other;
+package other;
 
-import Human.Jud;
-import Human.Louis;
+import human.Jud;
+import human.Louis;
 
 import java.util.Objects;
 

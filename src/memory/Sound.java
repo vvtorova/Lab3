@@ -1,6 +1,6 @@
-package Memory;
+package memory;
 
-import Exceptions.SoundAppearanceException;
+import exceptions.SoundAppearanceException;
 
 public class Sound{
         private String description;

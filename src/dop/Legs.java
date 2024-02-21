@@ -1,6 +1,6 @@
 package dop;
-import Exceptions.InvalidHeightExeption;
-import Human.Person;
+import exceptions.InvalidHeightExeption;
+import human.Person;
 
 
 public class Legs {

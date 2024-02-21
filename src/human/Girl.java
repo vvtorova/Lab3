@@ -1,6 +1,6 @@
-package Human;
+package human;
 
-import Interfaces.FirstInterface;
+import interfaces.FirstInterface;
 import enums.Location;
 import enums.Mood;
 

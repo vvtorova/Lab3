@@ -1,5 +1,4 @@
-package Other;
-import Other.Emotions;
+package other;
 
 public class InterectionsWithEmotions {
 

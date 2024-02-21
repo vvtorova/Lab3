@@ -1,8 +1,8 @@
-package Human;
-import Exceptions.SoundAppearanceException;
-import Interfaces.FirstInterface;
-import Memory.Sound;
-import Other.Emotions;
+package human;
+import exceptions.SoundAppearanceException;
+import interfaces.FirstInterface;
+import memory.Sound;
+import other.Emotions;
 import enums.Mood;
 import enums.Location;
 import java.util.Objects;

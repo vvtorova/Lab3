@@ -1,10 +1,10 @@
-package Human;
-import Interfaces.Feel;
-import Interfaces.FirstInterface;
-import Interfaces.Remembering;
-import Memory.Memories;
-import Other.Emotions;
-import Other.Shovel;
+package human;
+import interfaces.Feel;
+import interfaces.FirstInterface;
+import interfaces.Remembering;
+import memory.Memories;
+import other.Emotions;
+import other.Shovel;
 import enums.Location;
 import java.util.Objects;
 

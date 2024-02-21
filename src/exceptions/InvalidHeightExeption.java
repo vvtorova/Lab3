@@ -1,6 +1,6 @@
-package Exceptions;
+package exceptions;
 
-import Human.Person;
+import human.Person;
 import enums.Location;
 
 public class InvalidHeightExeption extends RuntimeException{

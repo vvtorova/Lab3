@@ -1,5 +1,4 @@
-package Interfaces;
-import Human.Person;
+package interfaces;
 
 public interface  FirstInterface {
     void toGo();
