@@ -1,9 +1,9 @@
-package dop;
+package subjects;
 
 public class Brunch {
     private final String weight;
     private final String type;
-    int height;
+    public int height;
 
     public Brunch(String weight,String type, int height) {
         this. weight =  weight;
@@ -15,14 +15,13 @@ public class Brunch {
     {
         return weight;
     }
-    Brunch brunch;
     public String getType(){
         return type;
     }
     public void toCrunch(){
         if(weight.equals("thick")){
 
-        System.out.print(getValueWeight()+" brunch crunched under his leg\n");
+        System.out.printf(getValueWeight()+" brunch crunched\n");
     }
     }
 }

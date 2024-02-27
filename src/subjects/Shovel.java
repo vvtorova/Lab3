@@ -1,12 +1,11 @@
-package other;
+package subjects;
 import enums.Location;
 
 public class Shovel {
-    public Shovel(String title, Location location ){
-        this.title=title;
+    public Shovel(Location location ){
         this.location = location;
     }
-    String title;
+    String title="shovel";
     Location location;
     public Location toChangePlace(Location location){
         return location;

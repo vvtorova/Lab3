@@ -8,20 +8,26 @@ public class Sound{
         public void setSound(String sound) throws SoundAppearanceException {
             if (sound == null) {
                 throw new SoundAppearanceException();
+            } else {
+                this.sound = sound;
             }
-            this.sound = sound;
         }
 
         public void setDescription(String description){
+            this.description=description;
         }
 
-        public String getDecription(){
+        public String getDescription(){
           return description;
         }
+        public String getSound(){
+            return sound;
+        }
+
 
         @Override
         public String toString() {
-            return String.format("%s sound %s",sound,description);
+            return String.format("%s sound with description - %s",getSound(),getDescription());
         }
 
     }

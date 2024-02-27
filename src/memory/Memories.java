@@ -27,7 +27,7 @@ Memories memory;
     }
     @Override
     public String getMemory() {
-        //String memoryString = String.valueOf(memory);
+        String memoryString = String.valueOf(memory);
         return currentMemory;
     }
 }

@@ -1,4 +1,4 @@
-package other;
+package subjects;
 
 
     public enum Emotions {
@@ -13,7 +13,8 @@ package other;
         FEAR("fear",-10),
         HYPNOTISED("hypnotised",3),
         POWER("power", 27),
-        ANGRY("angry", -50);
+        ANGRY("angry", -50),
+        ILL("ill",-35);
 
 
         private int effect;

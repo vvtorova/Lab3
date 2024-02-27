@@ -1,4 +1,4 @@
-package other;
+package subjects;
 import human.Person;
 import enums.Mood;
 
@@ -12,7 +12,7 @@ public class Tropa {
     public void toBeWidth(Flash flash, Person person, Trees trees) {
         if (Boolean.TRUE.equals(flash.getStatus())) {
             person.setEmotion(Emotions.AMAZED);
-            person.setNewEnergy(person);
+            person.setNewEnergy();
             trees.toMakeWay();
         }
     }
@@ -22,7 +22,7 @@ public class Tropa {
         tropa.width = "more width";
         System.out.println("Tropa seemed " + width);
         person.feel(Emotions.FEAR);
-        person.setNewEnergy(person);
+        person.setNewEnergy();
     }
 
     public void toTaper(Light light, Tropa.Stars stars) {

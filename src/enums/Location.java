@@ -5,7 +5,7 @@ public enum Location {
     PATH("path"),
     APPLETREE("apple tree"),
     STATION("station"),
-   INTHEHAND("in the hand"),
+    INTHEHAND("in the hand"),
     ONTHEGROUND("on the ground");
     private final String title;
     private Location location;

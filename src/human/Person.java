@@ -1,24 +1,31 @@
 package human;
+import body.Body;
+import enums.Direction;
+import exceptions.InvalidLocationExeption;
 import exceptions.SoundAppearanceException;
-import interfaces.FirstInterface;
+import interfaces.Breathing;
+import interfaces.Feeling;
+import interfaces.Going;
 import memory.Sound;
-import other.Emotions;
+import subjects.Emotions;
 import enums.Mood;
 import enums.Location;
 import java.util.Objects;
 
-public abstract class Person implements FirstInterface{
-   public int height;
+public abstract class Person implements Going, Feeling, Breathing {
+    private int height;
     private int energy;
     private final String name;
     private int mood;
     private Emotions emotion = Emotions.CALMNESS;
+    private Body body;
 
     public Person(String name, int energy, int mood, int height) {
         this.name = name;
         this.energy = energy;
         this.mood = mood;
         this.height=height;
+        this.body=new Body();
     }
 
     public String getName() {
@@ -28,15 +35,17 @@ public abstract class Person implements FirstInterface{
     public int getEnergy() {
         return energy;
     }
+    public void setEnergy(int energy){
+        this.energy=energy;
+    }
 
     public void feel(Emotions emotion) {
     }
-
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass())
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass())
             return false;
-        Person that = (Person) o;
+        Person that = (Person) object;
         return this.name.equals(that.name) && that.energy == this.energy;
     }
 
@@ -54,41 +63,43 @@ public abstract class Person implements FirstInterface{
         this.mod = mod;
     }
 
-    public void setNewEnergy(Person p) {
-        Emotions emotion =p.getEmotion();
-        int thisEnergy = p.getEnergy();
+    public void setNewEnergy() {
+        Emotions emotion =getEmotion();
+        int thisEnergy = getEnergy();
         energy = thisEnergy + emotion.getEffect();
     }
     public int getNewEnergy(){
         energy = getEnergy() + getEmotion().getEffect();
         return energy;
     }
-    private Sound sound;
+    public void setHeight(int height){
+        this.height=height;
+    }
     public void toMakeByFeeling (Emotions emotion) {
         switch (emotion) {
             case NOSTALGY:
                 Sound sound = new Sound();
-                System.out.println("During the war the commanders led the fighters to attack. It was madness, but really cheered up");
+                System.out.println("During the war the commanders led the fighters to attack");
                 try {
                     sound.setSound("Tipparary");
                 } catch (SoundAppearanceException soundAppearanceException) {
                     System.err.println("Error initiallization sound: " + soundAppearanceException.getMessage());
                 }
-                sound.setDescription("The marching song of the British Army");
+                sound.setDescription("The marching song");
                 hearSounds(sound);
                 break;
             case CONFIEDENCE:
                 System.out.print("Confident, but careful");
                 break;
             case CALMNESS:
-                System.out.println("He was calm and opened his rather calmly mouth to say");
+                System.out.println("He was calm and opened mouth to say");
                 doNothing();
                 break;
             default:
         }
 
     }
-   public void toGo(Person p) {
+   public void toGo() {
         energy=energy- (int) (Math.random()*10);
         height=height-1;
     }
@@ -104,37 +115,50 @@ public abstract class Person implements FirstInterface{
     public void hearSounds(Sound sound) {
     }
 
-    public void toStop(Emotions emotion) {
+    public Body getBody() {
+        return body;
+    }
+
+    public void toStop() {
         setEmotion(Emotions.AMAZED);
         energy -= Emotions.AMAZED.getEffect();
+        body.getEyes().Blink(5,1);
     }
 
     public void toAnswer() {
+        body.getHead().setVerticalPositionDegree(50);
+        body.getHead().turnHead(Direction.UP);
+        body.getHead().setVerticalPositionDegree(-50);
+        body.getHead().turnHead(Direction.DOWN);
+        body.getHead().turnHead(Direction.STRAIGHT);
+
+
 
     }
-
-
     public Emotions setEmotion(Emotions emotion) {
         return emotion;
     }
-
-
     public void toChangeMood() {
         int mood;
         mood = 2 * (getMood() - getEnergy());
     }
 Location location;
     public void setLocation(Location location) {
-        this.location = location;
+        if (getLocation() == Location.INTHEHAND || getLocation() == Location.ONTHEGROUND) {
+            throw new InvalidLocationExeption("It`s invalid Location:"+getLocation()+" change it");
+        } else {
+            this.location = location;
+        }
     }
     public Location getLocation(){
         return location;
     }
+
     public int hashCode(){
         return Objects.hash(this.getEnergy(),this.getMood(),this.getMood());
     }
     public String toString(){
-        return String.format("Человек %s с силой - %s", getName(),getEnergy());
+        return String.format("person %s with energy - %s", getName(),getEnergy());
     }
     public Emotions getEmotion(){
         return emotion;

@@ -1,4 +1,4 @@
-package other;
+package subjects;
 
 public class Flash {
     private boolean isOn;

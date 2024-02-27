@@ -1,6 +1,6 @@
-package other;
+package subjects;
 
-public class InterectionsWithEmotions {
+public class InteractionsWithEmotions {
 
     public void toMakeByFeeling(Emotions emotion) {
         switch (emotion) {

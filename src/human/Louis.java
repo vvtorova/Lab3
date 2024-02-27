@@ -1,70 +1,64 @@
 package human;
-import interfaces.Feel;
-import interfaces.FirstInterface;
+
+import body.Body;
+import enums.Direction;
 import interfaces.Remembering;
 import memory.Memories;
-import other.Emotions;
-import other.Shovel;
+import subjects.Emotions;
+import subjects.Shovel;
 import enums.Location;
 import java.util.Objects;
 
-public class Louis extends Person implements FirstInterface,Feel, Remembering {
+public class Louis extends Person implements Remembering {
     public Louis(String name, int energy, int mood, int height) {
-        super(name, energy, mood, height);
+        super("Louis", energy, mood, height);
     }
 
-    String name = "Louis";
-    int energy;
-    int mood;
-    int height;
 
     @Override
     public void feel(Emotions e) {
         toChangeMood();
         setEmotion(e);
-
+        setNewEnergy(getEmotion());
     }
 @Override
     public void toCalm() {
         feel(Emotions.CALMNESS);
     }
 
-    public void toShout(Object object) {
+    public boolean toShout(Object object) {
         if (object instanceof Louis) {
             Louis louis = (Louis) object;
             setEmotion(Emotions.ANGRY);
-            setNewEnergy(louis);
+            setNewEnergy();
+            return this == object;
+        } else {
+            toCalm();
+            return false;
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
     @Override
-    public void toGo() {
-        energy -= (int) (Math.random() * 5);
-        height = height - 1;
+    public void toGo(int step) {
+        setEnergy(getEnergy()-(int) (Math.random() * 5));
+        setHeight(getHeight()-step);
     }
 
     boolean result = true;
 
     public void toNotNotice() {
-        if (result == true) {
-            System.out.println("he didn`t take any attention.");
+        if (result) {
+            toGo();
+            System.out.printf("%s didn`t take any attention\n",getName());
         } else {
             System.out.println(getName() + " take any attention");
+            toGo();
         }
     }
-
-    public void toBreath() {
-        System.out.format("He breathed a sigh of relief\n");
-    }
-
-    public void setNewEnergy(Emotions emotion, Louis louis) {
+    public void setNewEnergy(Emotions emotion) {
         getEnergy();
         if (getEnergy() <= 50) {
-            setEnergy(energy = getEnergy() + emotion.getEffect());
+            setEnergy(getEnergy() + emotion.getEffect());
         } else {
             setEnergy(emotion.getEffect() - ((int) (Math.random() * 5)));
         }
@@ -88,14 +82,14 @@ public class Louis extends Person implements FirstInterface,Feel, Remembering {
     public void climbAppleTree(Location location) {
         if (location.isSwinging()){
         if (location.equals(Location.APPLETREE)) {
-                memory.remember(name + " remembered how climbed the swaying apple tree from childhood");
+                memory.remember( "Louis remembered how climbed the swaying apple tree from childhood");
                 System.out.println(memory.getMemory());
             }
         }
     }
     public void recallMemory(String s) {
         memory.remember(s);
-        System.out.println(memory.getMemory());
+        System.out.print(memory.getMemory());
     }
 
     public void shareMemory(Person person, Jud jud) {
@@ -118,18 +112,19 @@ public class Louis extends Person implements FirstInterface,Feel, Remembering {
         return Objects.hash(memory);
     }
 
-    public int toMoveDown(Louis louis) {
-        louis.toGo(louis);
-        return energy;
+    public int toMoveDown() {
+        toGo();
+        return getEnergy();
     }
 
     public void toAnswer() {
-        System.out.print("He realized, how");
-
-    }
-
-    public void setEnergy(int energy) {
-        this.energy = energy;
+        Body body=new Body();
+        body.getHead().setVerticalPositionDegree(50);
+        body.getHead().turnHead(Direction.UP);
+        body.getHead().setVerticalPositionDegree(-50);
+        body.getHead().turnHead(Direction.DOWN);
+        body.getHead().turnHead(Direction.STRAIGHT);
+        System.out.printf("%s realized, how ",getName());
     }
 
     public void useShovel(Shovel shovel, Jud jud) {
@@ -140,7 +135,7 @@ public class Louis extends Person implements FirstInterface,Feel, Remembering {
     }
 
     public void increaseEnergy(int amount) {
-        energy += amount;
+        setEnergy(getEnergy() + amount);
     }
 
     public void regive(Shovel shovel, Location location) {
@@ -164,5 +159,10 @@ public class Louis extends Person implements FirstInterface,Feel, Remembering {
     public String getMemory() {
         String memoryString = String.valueOf(memory);
         return memoryString;
+    }
+    @Override
+    public void toBreath(Body.Lungs lungs) {
+        lungs.takeaBreath();
+        System.out.printf("%s breathed a sigh of relief\n",getName());
     }
 }
